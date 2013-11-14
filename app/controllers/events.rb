@@ -37,6 +37,9 @@ get '/events/:event_id/edit' do
   redirect_if_not_logged_in
 
   @event = Event.find(params[:event_id])
+
+  redirect_if_not_resource_owner(@event.user.id)
+
   erb :edit_event_page
 end
 
@@ -45,6 +48,8 @@ post '/events/:event_id/edit' do
   redirect_if_not_logged_in
 
   @event = Event.find(params[:event_id])
+
+  redirect_if_not_resource_owner(@event.user.id)
 
   @event.update_attributes(
         :name => params[:event_name],
@@ -59,6 +64,9 @@ end
 # Delete a given event
 post '/events/:event_id/delete' do
   @event = Event.find(params[:event_id])
+
+  redirect_if_not_resource_owner(@event.user.id)
+
   @event.delete
 
   redirect to '/events'

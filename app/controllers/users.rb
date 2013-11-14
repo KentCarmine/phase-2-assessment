@@ -7,7 +7,7 @@ post '/login' do
   current_user = User.find_by_email(params[:email])
 
   if current_user
-    current_user = current_user.authenticate(params[:password]) # NOT SURE IF THIS SHOULD INVALIDATE CURRENT_USER
+    current_user = current_user.authenticate(params[:password])
 
     if current_user
       session[:current_user_id] = current_user.id
