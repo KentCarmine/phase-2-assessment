@@ -1,5 +1,5 @@
 helpers do
   def redirect_if_not_logged_in
-    redirect to '/' unless params[:current_user_id].nil?
+    redirect to '/' unless session[:current_user_id]
   end
 end

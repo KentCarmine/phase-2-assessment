@@ -1,10 +1,7 @@
 # Display a list of the current user's created events and links to create a new event
 # or edit an existing event
 get '/events' do
-  puts "LOGGED IN:"
-  p session[:current_user_id]
-  redirect to '/' unless params[:current_user_id]
-  # redirect_if_not_logged_in
+  redirect_if_not_logged_in
 
   @user = User.find(session[:current_user_id])
   @created_events = @user.created_events
@@ -12,16 +9,16 @@ get '/events' do
   erb :show_events_page
 end
 
-# Display a form to allow the current user to create new events
-get '/events/new' do
-  # redirect_if_not_logged_in
+# # Display a form to allow the current user to create new events
+# get '/events/new' do
+#   redirect_if_not_logged_in
 
-  erb :create_event_page
-end
+#   erb :create_event_page
+# end
 
 # Process the form data and create a new event associated with the current user
 post '/events/new' do
-  # redirect_if_not_logged_in
+  redirect_if_not_logged_in
 
   @current_user = User.find(session[:current_user_id])
 
@@ -37,7 +34,7 @@ end
 
 # Display a form to allow the current user to edit one of their created events
 get '/events/:event_id/edit' do
-  # redirect_if_not_logged_in
+  redirect_if_not_logged_in
 
   @event = Event.find(params[:event_id])
   erb :edit_event_page
@@ -45,7 +42,7 @@ end
 
 # Process the form data and edit the given event
 post '/events/:event_id/edit' do
-  # redirect_if_not_logged_in
+  redirect_if_not_logged_in
 
   @event = Event.find(params[:event_id])
 
