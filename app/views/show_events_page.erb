@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Your Events</h2>
+  <h3><a href='/events/new'>Create a New Event</a></h3>
+  <% @created_events.each do |event| %>
+    <h4><a href="/events/<%=event.id%>/edit"><%= event.name %></a></h4>
+    <p><strong>Located At: <%= event.location %></strong></p>
+    <p><strong>Start: <%= event.starts_at %></strong></p>
+    <p><strong>Finish: <%= event.ends_at %></strong></p>
+    <br>
+  <% end %>
+
+</div>

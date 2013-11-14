@@ -13,7 +13,7 @@ post '/login' do
 
     if current_user
       session[:current_user_id] = current_user.id
-      redirect to '/' # EDIT THIS!!!!
+      redirect to '/'
     else
       redirect to '/login'
     end
