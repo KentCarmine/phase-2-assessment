@@ -1,12 +1,32 @@
 <div class="container">
   <h2>Your Events</h2>
   <h3><a href='/events/new'>Create a New Event</a></h3>
-  <% @created_events.each do |event| %>
-    <h4><a href="/events/<%=event.id%>/edit"><%= event.name %></a></h4>
-    <p><strong>Located At: <%= event.location %></strong></p>
-    <p><strong>Start: <%= event.starts_at %></strong></p>
-    <p><strong>Finish: <%= event.ends_at %></strong></p>
-    <br>
-  <% end %>
+  <div class="all_events">
+    <% @created_events.each do |event| %>
+    <div class="single_event">
+      <h4><a href="/events/<%=event.id%>/edit"><%= event.name %></a></h4>
+      <p><strong>Located At: <%= event.location %></strong></p>
+      <p><strong>Start: <%= event.starts_at %></strong></p>
+      <p><strong>Finish: <%= event.ends_at %></strong></p>
+      <form action="events/<%=event.id%>/delete" method="POST">
+        <input type="submit" value="Delete This Event">
+      </form>
+      <br>
+    </div>
+    <% end %>
+  </div>
 
+  <br>
+  <div>
+    <h2>Create a new Event</h2>
+    <form action="/events/new" method="POST" id="ajaxified_form"><br>
+      Event Name: <input type="text" name="event_name" id="event_name"><br>
+      Location: <input type="text" name="location" id="location"><br>
+      Starts At: <input type="text" name="start_time" id="start_time"><br>
+      Ends At: <input type="text" name="end_time" id="end_time"><br>
+      <input type="submit" value="Create Event">
+    </form>
+  </div>
+  <br>
+  <a href="/logout">Logout</a>
 </div>

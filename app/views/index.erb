@@ -1,9 +1,11 @@
 <div class="container">
   <h1>Welcome to Events Manager</h1>
-  <h4><a href="/login">Login Existing User</a></h4><br>
-  <h4><a href="/logout">Logout Current User</a></h4><br>
-  <h4><a href="/users/new">Create an Account</a></h4><br>
+
   <% if session[:current_user_id] %>
-  <h4><a href="/events/">Your Events</a></h4><br>
+    <h4><a href="/logout">Logout Current User</a></h4><br>
+    <h4><a href="/events">Your Events</a></h4><br>
+  <% else %>
+    <h4><a href="/login">Login Existing User</a></h4><br>
+    <h4><a href="/users/new">Create an Account</a></h4><br>
   <% end %>
 </div>

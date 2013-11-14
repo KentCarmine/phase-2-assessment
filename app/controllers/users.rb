@@ -1,6 +1,4 @@
 get '/login'  do
-  session.clear
-
   erb :login_page
 end
 
@@ -13,19 +11,21 @@ post '/login' do
 
     if current_user
       session[:current_user_id] = current_user.id
+      puts "HERE"
       redirect to '/'
     else
+      puts "FAILED TO LOGIN 1"
       redirect to '/login'
     end
 
   end
-
+  puts "FAILED TO LOGIN 2"
   redirect to '/login'
 end
 
 get '/logout' do
   session.clear
-
+  puts "LOGGED OUT"
   redirect to '/'
 end
 

@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Create a new Event</h2>
+  <form action="/events/<%=@event.id%>/edit" method="POST"><br>
+    Event Name: <input type="text" name="event_name" value="<%=@event.name%>"><br>
+    Location: <input type="text" name="location" value="<%=@event.location%>"><br>
+    Starts At: <input type="text" name="start_time" value="<%=@event.starts_at%>"><br>
+    Ends At: <input type="text" name="end_time" value="<%=@event.ends_at%>"><br>
+    <input type="submit" value="Update Event">
+  </form>
+
+</div>
